@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPTV OK - La mejor manera de ver televisión</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- BANNER PUBLICITARIO -->
+    <header class="banner">
+        <div class="banner-content">
+            <div class="logo-text">IPTV <span class="highlight">OK</span></div>
+            <h1>La mejor manera de ver televisión</h1>
+            <p>Disfruta de más de 1,000 canales en vivo, películas y series en alta definición sin cortes ni antenas.</p>
+            <div class="banner-badges">
+                <span><i class="fa-solid fa-bolt"></i> Activación Inmediata</span>
+                <span><i class="fa-solid fa-tv"></i> Full HD / 4K</span>
+                <span><i class="fa-solid fa-shield-halved"></i> 100% Estable</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECCIÓN DE PLANES Y PRECIOS -->
+    <main class="main-container">
+        <section class="pricing-section">
+            <div class="section-title">
+                <h2>Nuestros Planes</h2>
+                <p>Adquiera su plan que más se ajuste a su presupuesto</p>
+            </div>
+
+            <div class="plans-grid">
+                <!-- Plan 1 -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Plan 1</h3>
+                        <span class="price">$2<span>/mes</span></span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check"></i> 1 Dispositivo / Pantalla</li>
+                        <li><i class="fa-solid fa-check"></i> Canales Nacionales e Internacionales</li>
+                        <li><i class="fa-solid fa-check"></i> Listas Actualizadas</li>
+                        <li><i class="fa-solid fa-xmark cross"></i> Sin soporte multipantalla</li>
+                    </ul>
+                    <button class="select-plan-btn" onclick="seleccionarPlan('Plan 1 ($2)')">Elegir Plan 1</button>
+                </div>
+
+                <!-- Plan 2 -->
+                <div class="plan-card popular">
+                    <div class="badge-popular">Más Popular</div>
+                    <div class="plan-header">
+                        <h3>Plan 2</h3>
+                        <span class="price">$4<span>/mes</span></span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check"></i> 2 Dispositivos Simultáneos</li>
+                        <li><i class="fa-solid fa-check"></i> Canales HD y FHD</li>
+                        <li><i class="fa-solid fa-check"></i> Secciones de Películas y Series (VOD)</li>
+                        <li><i class="fa-solid fa-check"></i> Soporte Preferencial</li>
+                    </ul>
+                    <button class="select-plan-btn popular-btn" onclick="seleccionarPlan('Plan 2 ($4)')">Elegir Plan 2</button>
+                </div>
+
+                <!-- Plan 3 -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Plan 3</h3>
+                        <span class="price">$6<span>/mes</span></span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check"></i> Hasta 3 Pantallas Simultáneas</li>
+                        <li><i class="fa-solid fa-check"></i> Máxima Calidad HD / 4K</li>
+                        <li><i class="fa-solid fa-check"></i> VOD Completo y Estrenos</li>
+                        <li><i class="fa-solid fa-check"></i> Soporte VIP 24/7</li>
+                    </ul>
+                    <button class="select-plan-btn" onclick="seleccionarPlan('Plan 3 ($6)')">Elegir Plan 3</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE PAGO MÓVIL Y FORMULARIO WHATSAPP -->
+        <section class="checkout-section">
+            <div class="payment-info">
+                <h3><i class="fa-solid fa-mobile-screen-button"></i> Información de Pago Móvil (Venezuela)</h3>
+                <p>Puedes cancelar mediante Pago Móvil con los siguientes datos oficiales antes de enviar tu solicitud:</p>
+                <ul>
+                    <li><strong>Banco:</strong> 0102 (Banco de Venezuela)</li>
+                    <li><strong>Teléfono:</strong> 0412-1459202</li>
+                    <li><strong>Cédula / RIF:</strong> 12723025</li>
+                    <li><strong>Tasa:</strong> BCV del día</li>
+                </ul>
+            </div>
+
+            <div class="contact-box">
+                <h2>Finaliza tu compra por WhatsApp</h2>
+                <p>Ingresa tus datos o completa el formulario tras elegir tu plan:</p>
+
+                <form id="whatsappForm" onsubmit="enviarWhatsApp(event)">
+                    <div class="form-group">
+                        <label for="nombre"><i class="fa-solid fa-user"></i> Tu Nombre:</label>
+                        <input type="text" id="nombre" placeholder="Ej. Carlos Pérez" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="planSelect"><i class="fa-solid fa-list"></i> Plan Seleccionado:</label>
+                        <select id="planSelect" required>
+                            <option value="" disabled selected>Elige un plan...</option>
+                            <option value="Plan 1 ($2)">Plan 1 - $2</option>
+                            <option value="Plan 2 ($4) - Más Popular">Plan 2 - $4</option>
+                            <option value="Plan 3 ($6)">Plan 3 - $6</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="referencia"><i class="fa-solid fa-receipt"></i> Referencia de Pago Móvil (Opcional):</label>
+                        <input type="text" id="referencia" placeholder="Últimos 4 dígitos o ref completa">
+                    </div>
+
+                    <!-- NÚMERO DE CONTACTO VISIBLE -->
+                    <div class="contact-number-display">
+                        <i class="fa-brands fa-whatsapp"></i> Número de WhatsApp Directo: <strong>+58 412-1459202</strong>
+                    </div>
+
+                    <button type="submit" class="whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Enviar Comprobante / Pedir Activación
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>&copy; 2026 IPTV OK. Todos los derechos reservados. Diseñado para ofrecer la mejor experiencia de entretenimiento.</p>
+    </footer>
+
+    <!-- SCRIPT DE INTERACCIÓN -->
+    <script>
+        function seleccionarPlan(nombrePlan) {
+            document.getElementById('planSelect').value = nombrePlan;
+            document.querySelector('.checkout-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function enviarWhatsApp(event) {
+            event.preventDefault();
+            const telefono = "584121459202"; 
+            const nombre = document.getElementById('nombre').value;
+            const plan = document.getElementById('planSelect').value;
+            const referencia = document.getElementById('referencia').value || "No especificada aún";
+
+            const mensaje = `¡Hola! Mi nombre es *${nombre}*. Deseo adquirir el *${plan}*. Mi referencia de Pago Móvil es: *${referencia}*. Quedo atento para la activación.`;
+            const urlWhatsApp = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+    </script>
+</body>
+</html>

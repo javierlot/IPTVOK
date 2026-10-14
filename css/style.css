@@ -1,0 +1,349 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0b0c10 0%, #1f2833 100%);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.banner {
+    position: relative;
+    background: linear-gradient(135deg, rgba(15, 12, 41, 0.9), rgba(48, 43, 99, 0.85), rgba(36, 36, 62, 0.9));
+    padding: 70px 20px;
+    text-align: center;
+    border-bottom: 5px solid #00ff88;
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+}
+
+.banner-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.logo-text {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+}
+
+.logo-text .highlight {
+    color: #00ff88;
+}
+
+.banner h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ffffff, #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.banner p {
+    font-size: 1.25rem;
+    color: #e0e0e0;
+    margin-bottom: 25px;
+}
+
+.banner-badges {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.banner-badges span {
+    background: rgba(0, 255, 136, 0.15);
+    border: 1px solid #00ff88;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #00ff88;
+    font-weight: bold;
+}
+
+.main-container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+    flex: 1;
+}
+
+.pricing-section {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    font-size: 1.1rem;
+    color: #a0a5b8;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.plan-card {
+    background: rgba(26, 28, 41, 0.85);
+    border: 2px solid #2a2d42;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.plan-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 255, 136, 0.2);
+    border-color: #00ff88;
+}
+
+.plan-card.popular {
+    border: 2px solid #00ff88;
+    background: rgba(22, 33, 48, 0.95);
+    transform: scale(1.03);
+}
+
+.badge-popular {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #00ff88;
+    color: #0b0c10;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.plan-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #00ff88;
+    display: block;
+    margin-bottom: 25px;
+}
+
+.price span {
+    font-size: 1rem;
+    color: #a0a5b8;
+    font-weight: normal;
+}
+
+.plan-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.plan-features li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.95rem;
+    color: #dcdde1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.plan-features li i.fa-check {
+    color: #00ff88;
+}
+
+.plan-features li i.cross {
+    color: #ff4757;
+}
+
+.select-plan-btn {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid #00ff88;
+    color: #00ff88;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.select-plan-btn:hover {
+    background: #00ff88;
+    color: #0b0c10;
+}
+
+.popular-btn {
+    background: #00ff88;
+    color: #0b0c10;
+}
+
+.popular-btn:hover {
+    background: #00cc6a;
+    border-color: #00cc6a;
+}
+
+.checkout-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    background: rgba(20, 22, 33, 0.9);
+    border: 1px solid #2a2d42;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.payment-info h3 {
+    font-size: 1.5rem;
+    color: #00ff88;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.payment-info p {
+    color: #cccccc;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.payment-info ul {
+    list-style: none;
+}
+
+.payment-info ul li {
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.1);
+    color: #e0e0e0;
+}
+
+.contact-box h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.contact-box p {
+    font-size: 0.95rem;
+    color: #a0a5b8;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    color: #00ff88;
+    font-weight: bold;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    background-color: #0b0c10;
+    border: 1px solid #2a2d42;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: #00ff88;
+}
+
+.contact-number-display {
+    background: rgba(37, 211, 102, 0.1);
+    border: 1px solid #25d366;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 0.95px;
+    color: #25d366;
+    text-align: center;
+}
+
+.contact-number-display strong {
+    color: #ffffff;
+}
+
+.whatsapp-btn {
+    width: 100%;
+    background-color: #25d366;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-btn:hover {
+    background-color: #1ebe5d;
+    transform: translateY(-2px);
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: #07080a;
+    color: #777;
+    font-size: 0.85rem;
+    border-top: 1px solid #1a1c29;
+}
+
+@media (max-width: 900px) {
+    .checkout-section {
+        grid-template-columns: 1fr;
+    }
+}
