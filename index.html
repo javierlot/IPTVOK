@@ -3,156 +3,528 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPTV OK - La mejor manera de ver televisión</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>IPTV OK - El Mejor Entretenimiento en Vivo y Películas</title>
+    <!-- Google Fonts & FontAwesome para iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131b2e;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --whatsapp: #25d366;
+            --whatsapp-hover: #20ba5a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(11, 15, 25, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        .nav-whatsapp {
+            background-color: var(--whatsapp);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+
+        .nav-whatsapp:hover {
+            background-color: var(--whatsapp-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 20px 80px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1e1b4b 0%, var(--bg-color) 70%);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Features */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            font-weight: 600;
+        }
+
+        .features {
+            padding: 80px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+            background: rgba(19, 27, 46, 0.4);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-card.popular {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+        }
+
+        .badge-popular {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 4px 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 20px;
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .price-features li {
+            padding: 8px 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price-features li i {
+            color: var(--whatsapp);
+        }
+
+        .btn-select {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .price-card.popular .btn-select, .btn-select:hover {
+            background: var(--accent);
+        }
+
+        /* Order Form Section */
+        .order-section {
+            padding: 80px 0;
+        }
+
+        .order-form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--bg-color);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+        }
+
+        .btn-whatsapp-submit {
+            background-color: var(--whatsapp);
+            color: white;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-whatsapp-submit:hover {
+            background-color: var(--whatsapp-hover);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .order-form-container { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- BANNER PUBLICITARIO -->
-    <header class="banner">
-        <div class="banner-content">
-            <div class="logo-text">IPTV <span class="highlight">OK</span></div>
-            <h1>La mejor manera de ver televisión</h1>
-            <p>Disfruta de más de 1,000 canales en vivo, películas y series en alta definición sin cortes ni antenas.</p>
-            <div class="banner-badges">
-                <span><i class="fa-solid fa-bolt"></i> Activación Inmediata</span>
-                <span><i class="fa-solid fa-tv"></i> Full HD / 4K</span>
-                <span><i class="fa-solid fa-shield-halved"></i> 100% Estable</span>
-            </div>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-tv"></i> IPTV OK
         </div>
+        <a href="https://wa.me/584121459202?text=Hola,%20quiero%20más%20información%20sobre%20las%20listas%20M3U%20de%20IPTV%20OK" target="_blank" class="nav-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i> Soporte WhatsApp
+        </a>
     </header>
 
-    <!-- SECCIÓN DE PLANES Y PRECIOS -->
-    <main class="main-container">
-        <section class="pricing-section">
-            <div class="section-title">
-                <h2>Nuestros Planes</h2>
-                <p>Adquiera su plan que más se ajuste a su presupuesto</p>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Bienvenido a IPTV OK: Canales en Vivo y Películas en <span>Calidad HD y 4K</span></h1>
+            <p>Accede a miles de canales nacionales e internacionales, deportes en directo, estrenos de cine y series actualizadas en cualquier dispositivo.</p>
+            <a href="#planes" class="btn-primary">Ver Planes Disponibles</a>
+        </div>
+    </section>
 
-            <div class="plans-grid">
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">¿Por qué elegir IPTV OK?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h3>Estabilidad Garantizada</h3>
+                    <p>Servidores de alta velocidad con máxima fluidez y alta disponibilidad.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-film"></i>
+                    <h3>Cine y Series (VOD)</h3>
+                    <p>Contenido actualizado constantemente con los últimos estrenos de cine y plataformas.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-futbol"></i>
+                    <h3>Deportes en Vivo</h3>
+                    <p>Ligas de fútbol, eventos PPV y campeonatos deportivos sin interrupciones.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-devices"></i>
+                    <h3>Multi-Dispositivo</h3>
+                    <p>Compatible con Smart TV, Fire Stick, Android TV, celulares, PC y TV Box.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="planes">
+        <div class="container">
+            <h2 class="section-title">Planes IPTV OK</h2>
+            <div class="pricing-grid">
                 <!-- Plan 1 -->
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <h3>Plan 1</h3>
-                        <span class="price">$2<span>/mes</span></span>
+                <div class="price-card">
+                    <div>
+                        <h3>Plan Básico</h3>
+                        <div class="price">$2 <span>/ mes</span></div>
+                        <ul class="price-features">
+                            <li><i class="fa-solid fa-check"></i> Canales en Vivo HD</li>
+                            <li><i class="fa-solid fa-check"></i> Películas y Series</li>
+                            <li><i class="fa-solid fa-check"></i> 1 Conexión Simultánea</li>
+                            <li><i class="fa-solid fa-check"></i> Lista M3U Incluida</li>
+                            <li><i class="fa-solid fa-check"></i> Soporte Técnico Directo</li>
+                        </ul>
                     </div>
-                    <ul class="plan-features">
-                        <li><i class="fa-solid fa-check"></i> 1 Dispositivo / Pantalla</li>
-                        <li><i class="fa-solid fa-check"></i> Canales Nacionales e Internacionales</li>
-                        <li><i class="fa-solid fa-check"></i> Listas Actualizadas</li>
-                        <li><i class="fa-solid fa-xmark cross"></i> Sin soporte multipantalla</li>
-                    </ul>
-                    <button class="select-plan-btn" onclick="seleccionarPlan('Plan 1 ($2)')">Elegir Plan 1</button>
+                    <button class="btn-select" onclick="seleccionarPlan('Plan Básico ($2)')">Elegir Plan</button>
                 </div>
 
                 <!-- Plan 2 -->
-                <div class="plan-card popular">
-                    <div class="badge-popular">Más Popular</div>
-                    <div class="plan-header">
-                        <h3>Plan 2</h3>
-                        <span class="price">$4<span>/mes</span></span>
+                <div class="price-card popular">
+                    <div class="badge-popular">Más Vendido</div>
+                    <div>
+                        <h3>Plan Estándar</h3>
+                        <div class="price">$4 <span>/ mes</span></div>
+                        <ul class="price-features">
+                            <li><i class="fa-solid fa-check"></i> Canales en Vivo HD / FHD</li>
+                            <li><i class="fa-solid fa-check"></i> Catálogo Completo VOD</li>
+                            <li><i class="fa-solid fa-check"></i> Eventos Deportivos en Vivo</li>
+                            <li><i class="fa-solid fa-check"></i> 1 Conexión Simultánea</li>
+                            <li><i class="fa-solid fa-check"></i> Servidor Recomendado</li>
+                        </ul>
                     </div>
-                    <ul class="plan-features">
-                        <li><i class="fa-solid fa-check"></i> 2 Dispositivos Simultáneos</li>
-                        <li><i class="fa-solid fa-check"></i> Canales HD y FHD</li>
-                        <li><i class="fa-solid fa-check"></i> Secciones de Películas y Series (VOD)</li>
-                        <li><i class="fa-solid fa-check"></i> Soporte Preferencial</li>
-                    </ul>
-                    <button class="select-plan-btn popular-btn" onclick="seleccionarPlan('Plan 2 ($4)')">Elegir Plan 2</button>
+                    <button class="btn-select" onclick="seleccionarPlan('Plan Estándar ($4)')">Elegir Plan</button>
                 </div>
 
                 <!-- Plan 3 -->
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <h3>Plan 3</h3>
-                        <span class="price">$6<span>/mes</span></span>
+                <div class="price-card">
+                    <div>
+                        <h3>Plan Premium</h3>
+                        <div class="price">$6 <span>/ mes</span></div>
+                        <ul class="price-features">
+                            <li><i class="fa-solid fa-check"></i> Canales HD, FHD y 4K</li>
+                            <li><i class="fa-solid fa-check"></i> Películas + Estrenos de Cine</li>
+                            <li><i class="fa-solid fa-check"></i> Todos los Deportes PPV</li>
+                            <li><i class="fa-solid fa-check"></i> Conexión de Alta Velocidad</li>
+                            <li><i class="fa-solid fa-check"></i> Soporte Prioritario 24/7</li>
+                        </ul>
                     </div>
-                    <ul class="plan-features">
-                        <li><i class="fa-solid fa-check"></i> Hasta 3 Pantallas Simultáneas</li>
-                        <li><i class="fa-solid fa-check"></i> Máxima Calidad HD / 4K</li>
-                        <li><i class="fa-solid fa-check"></i> VOD Completo y Estrenos</li>
-                        <li><i class="fa-solid fa-check"></i> Soporte VIP 24/7</li>
-                    </ul>
-                    <button class="select-plan-btn" onclick="seleccionarPlan('Plan 3 ($6)')">Elegir Plan 3</button>
+                    <button class="btn-select" onclick="seleccionarPlan('Plan Premium ($6)')">Elegir Plan</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SECCIÓN DE PAGO MÓVIL Y FORMULARIO WHATSAPP -->
-        <section class="checkout-section">
-            <div class="payment-info">
-                <h3><i class="fa-solid fa-mobile-screen-button"></i> Información de Pago Móvil (Venezuela)</h3>
-                <p>Puedes cancelar mediante Pago Móvil con los siguientes datos oficiales antes de enviar tu solicitud:</p>
-                <ul>
-                    <li><strong>Banco:</strong> 0102 (Banco de Venezuela)</li>
-                    <li><strong>Teléfono:</strong> 0412-1459202</li>
-                    <li><strong>Cédula / RIF:</strong> 12723025</li>
-                    <li><strong>Tasa:</strong> BCV del día</li>
-                </ul>
-            </div>
-
-            <div class="contact-box">
-                <h2>Finaliza tu compra por WhatsApp</h2>
-                <p>Ingresa tus datos o completa el formulario tras elegir tu plan:</p>
-
+    <!-- Order Form Section -->
+    <section class="order-section" id="pedir">
+        <div class="container">
+            <h2 class="section-title">Solicita tu Cuenta por WhatsApp</h2>
+            <div class="order-form-container">
                 <form id="whatsappForm" onsubmit="enviarWhatsApp(event)">
                     <div class="form-group">
-                        <label for="nombre"><i class="fa-solid fa-user"></i> Tu Nombre:</label>
-                        <input type="text" id="nombre" placeholder="Ej. Carlos Pérez" required>
+                        <label for="nombre">Tu Nombre:</label>
+                        <input type="text" id="nombre" class="form-control" placeholder="Ej. Juan Pérez" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="planSelect"><i class="fa-solid fa-list"></i> Plan Seleccionado:</label>
-                        <select id="planSelect" required>
-                            <option value="" disabled selected>Elige un plan...</option>
-                            <option value="Plan 1 ($2)">Plan 1 - $2</option>
-                            <option value="Plan 2 ($4) - Más Popular">Plan 2 - $4</option>
-                            <option value="Plan 3 ($6)">Plan 3 - $6</option>
+                        <label for="planSeleccionado">Plan de Interés:</label>
+                        <select id="planSeleccionado" class="form-control">
+                            <option value="Plan Básico ($2)">Plan Básico - $2</option>
+                            <option value="Plan Estándar ($4)" selected>Plan Estándar - $4 (Más Vendido)</option>
+                            <option value="Plan Premium ($6)">Plan Premium - $6</option>
+                            <option value="Demostración Gratis">Quiero una Demo Gratis de Prueba</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="referencia"><i class="fa-solid fa-receipt"></i> Referencia de Pago Móvil (Opcional):</label>
-                        <input type="text" id="referencia" placeholder="Últimos 4 dígitos o ref completa">
+                        <label for="dispositivo">¿Qué dispositivo vas a utilizar?</label>
+                        <select id="dispositivo" class="form-control">
+                            <option value="Smart TV (Samsung/LG)">Smart TV (Samsung / LG)</option>
+                            <option value="Fire TV Stick">Fire TV Stick</option>
+                            <option value="Android TV / TV Box">Android TV / TV Box</option>
+                            <option value="Celular / Tablet (Android o iOS)">Celular / Tablet (Android o iOS)</option>
+                            <option value="Computadora (PC / Mac)">Computadora (PC / Mac)</option>
+                        </select>
                     </div>
 
-                    <!-- NÚMERO DE CONTACTO VISIBLE -->
-                    <div class="contact-number-display">
-                        <i class="fa-brands fa-whatsapp"></i> Número de WhatsApp Directo: <strong>+58 412-1459202</strong>
-                    </div>
-
-                    <button type="submit" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Enviar Comprobante / Pedir Activación
+                    <button type="submit" class="btn-whatsapp-submit">
+                        <i class="fa-brands fa-whatsapp fa-lg"></i> Solicitar por WhatsApp
                     </button>
                 </form>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- PIE DE PÁGINA -->
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 IPTV OK. Todos los derechos reservados. Diseñado para ofrecer la mejor experiencia de entretenimiento.</p>
+        <p>&copy; 2026 IPTV OK. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- SCRIPT DE INTERACCIÓN -->
+    <!-- JavaScript para automatizar el mensaje de WhatsApp -->
     <script>
         function seleccionarPlan(nombrePlan) {
-            document.getElementById('planSelect').value = nombrePlan;
-            document.querySelector('.checkout-section').scrollIntoView({ behavior: 'smooth' });
+            const selectPlan = document.getElementById('planSeleccionado');
+            for(let i=0; i<selectPlan.options.length; i++) {
+                if(selectPlan.options[i].value === nombrePlan) {
+                    selectPlan.selectedIndex = i;
+                    break;
+                }
+            }
+            document.getElementById('pedir').scrollIntoView({ behavior: 'smooth' });
         }
 
         function enviarWhatsApp(event) {
             event.preventDefault();
-            const telefono = "584121459202"; 
-            const nombre = document.getElementById('nombre').value;
-            const plan = document.getElementById('planSelect').value;
-            const referencia = document.getElementById('referencia').value || "No especificada aún";
 
-            const mensaje = `¡Hola! Mi nombre es *${nombre}*. Deseo adquirir el *${plan}*. Mi referencia de Pago Móvil es: *${referencia}*. Quedo atento para la activación.`;
-            const urlWhatsApp = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-            window.open(urlWhatsApp, '_blank');
+            const nombre = document.getElementById('nombre').value;
+            const plan = document.getElementById('planSeleccionado').value;
+            const dispositivo = document.getElementById('dispositivo').value;
+
+            const telefonoWhatsApp = "584121459202"; 
+
+            const mensaje = `Hola *IPTV OK*! 👋 Mi nombre es *${nombre}*.\nDeseo contratar el siguiente servicio:\n\n📦 *Plan:* ${plan}\n📺 *Dispositivo:* ${dispositivo}\n\n¿Me podrías indicar las formas de pago disponibles? Gracias.`;
+
+            const url = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
+            window.open(url, '_blank');
         }
     </script>
 </body>
